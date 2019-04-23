@@ -1,8 +1,22 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm'
+    id 'java-gradle-plugin'
 }
 
 dependencies {
     implementation gradleApi()
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+    compile project(':common')
 }
+
+gradlePlugin {
+    plugins {
+        buildeye {
+            id = 'com.github.buildeye'
+            implementationClass = 'com.github.buildeye.BuildEyePlugin'
+        }
+    }
+}
+
+publish()
