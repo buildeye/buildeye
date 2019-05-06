@@ -1,5 +1,10 @@
 package com.github.buildeye.infos
 
-sealed class BuildResultInfo
-data class BuildFailInfo(val action: String, val failure: Throwable) : BuildResultInfo()
-data class BuildSuccessInfo(val action: String) : BuildResultInfo()
+data class BuildResultInfo(
+        val action: Action,
+        val failure: FailureInfo?
+) {
+    enum class Action {
+        BUILD, CONFIGURE
+    }
+}
